@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常用语言停用词下载器</title>
+    <link rel="icon" href="{{ url_for('static', filename='bee.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    {% endblock %}
+</head>
+<body class="body">
+    {% for message in get_flashed_messages() %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+    <h2>
+        <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/bee.ico') }}">
+        常见语言停用词下载
+    </h2>
+    {% block content %}{% endblock %}
+    <footer class="footer">
+        <small>&copy; 2019-2022 <a href="http://www.zglg.work/">Python中文网</a></small>
+	</footer>
+</body>
+</html>

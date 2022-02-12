@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>按语言名称拼音顺序显示</p>
+
+<table border="1">
+    <tr>
+        <th>语言名称</th>
+        <th>停用词例子</th>
+        <th>停用词数</th>
+        <th>下载</th>
+    </tr>
+    {% for lang in stop_words%}
+    <tr>
+        <td>{{lang}}</td>
+        <td>{{stop_words[lang].words}}</td>
+        <td>{{stop_words[lang].word_n}}</td>
+        <td>
+            <form class="inline-form" method="post" action="{{ url_for('download', lang=lang) }}">
+                <input class="btn" type="submit" name="download" value="下载">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

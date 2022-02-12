@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post" action="{{ url_for('search') }}">
+    {%if target%}
+    <input type="text" name="target" value={{target}}>
+    {%else%}
+    <input type="text" name="target" value="表情关键词英文" placeholder="表情关键词英文">
+    {%endif%}
+
+    <input class="btn" type="submit" name="submit" value="查询">
+</form>
+<br/>
+<form method="get" action="{{ url_for('search_all') }}">
+    <input class="btn" type="submit" name="submit" value="所有表情">
+</form>
+
+<br/>
+{% if emo_list %}
+<table border="1" width="100%">
+    <tr>
+        <th>表情</th>
+        <th>对应字符串</th>
+    </tr>
+    {% for emo in emo_list%}
+    <tr>
+        <td width="15%" style="text-align:center"><font size="5">{{emo[0]}}</font></td>
+        <td>{{emo[1]}}</td>
+    </tr>
+    {% endfor %}
+    {%endif%}
+
+</table>
+{% endblock %}
